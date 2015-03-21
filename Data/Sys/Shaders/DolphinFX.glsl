@@ -1,5 +1,5 @@
 /*===============================================================================*\
-|########################     [Dolphin FX Suite 2.10]      #######################|
+|########################     [Dolphin FX Suite 2.20]      #######################|
 |##########################        By Asmodean          ##########################|
 ||                                                                               ||
 ||          This program is free software; you can redistribute it and/or        ||
@@ -64,7 +64,7 @@ DependentOption = A_SCALERS
 [OptionBool]
 GUIName = FXAA
 OptionName = A_FXAA_PASS
-DefaultValue = true
+DefaultValue = false
 
 [OptionRangeFloat]
 GUIName = SubpixelMax
@@ -113,14 +113,14 @@ OptionName = B_BLOOM_STRENGTH
 MinValue = 0.000
 MaxValue = 1.000
 StepAmount = 0.001
-DefaultValue = 0.250
+DefaultValue = 0.220
 DependentOption = B_BLOOM_PASS
 
 [OptionRangeFloat]
 GUIName = BlendStrength
 OptionName = C_BLEND_STRENGTH
 MinValue = 0.000
-MaxValue = 1.500
+MaxValue = 1.200
 StepAmount = 0.010
 DefaultValue = 1.000
 DependentOption = B_BLOOM_PASS
@@ -131,7 +131,7 @@ OptionName = D_B_DEFOCUS
 MinValue = 1.000
 MaxValue = 4.000
 StepAmount = 0.100
-DefaultValue = 2.200
+DefaultValue = 2.000
 DependentOption = B_BLOOM_PASS
 
 [OptionRangeFloat]
@@ -140,7 +140,7 @@ OptionName = D_BLOOM_WIDTH
 MinValue = 1.000
 MaxValue = 8.000
 StepAmount = 0.100
-DefaultValue = 4.000
+DefaultValue = 3.200
 DependentOption = B_BLOOM_PASS
 
 [OptionRangeFloat]
@@ -149,7 +149,7 @@ OptionName = E_BLOOM_REDS
 MinValue = 0.000
 MaxValue = 0.500
 StepAmount = 0.001
-DefaultValue = 0.010
+DefaultValue = 0.020
 DependentOption = B_BLOOM_PASS
 
 [OptionRangeFloat]
@@ -158,7 +158,7 @@ OptionName = F_BLOOM_GREENS
 MinValue = 0.000
 MaxValue = 0.500
 StepAmount = 0.001
-DefaultValue = 0.005
+DefaultValue = 0.010
 DependentOption = B_BLOOM_PASS
 
 [OptionRangeFloat]
@@ -167,7 +167,7 @@ OptionName = G_BLOOM_BLUES
 MinValue = 0.000
 MaxValue = 0.500
 StepAmount = 0.001
-DefaultValue = 0.005
+DefaultValue = 0.010
 DependentOption = B_BLOOM_PASS
 
 [OptionBool]
@@ -184,13 +184,31 @@ StepAmount = 1
 DefaultValue = 1
 DependentOption = C_TONEMAP_PASS
 
+[OptionRangeInteger]
+GUIName = FilmOperator
+OptionName = A_TONEMAP_FILM
+MinValue = 0
+MaxValue = 1
+StepAmount = 1
+DefaultValue = 1
+DependentOption = C_TONEMAP_PASS
+
 [OptionRangeFloat]
 GUIName = ToneAmount
 OptionName = B_TONE_AMOUNT
 MinValue = 0.05
 MaxValue = 2.00
 StepAmount = 0.01
-DefaultValue = 0.33
+DefaultValue = 0.30
+DependentOption = C_TONEMAP_PASS
+
+[OptionRangeFloat]
+GUIName = FilmStrength
+OptionName = B_TONE_FAMOUNT
+MinValue = 0.00
+MaxValue = 1.00
+StepAmount = 0.01
+DefaultValue = 0.25
 DependentOption = C_TONEMAP_PASS
 
 [OptionRangeFloat]
@@ -238,36 +256,45 @@ DefaultValue = true
 GUIName = CorrectionPalette
 OptionName = A_PALETTE
 MinValue = 0
-MaxValue = 3
+MaxValue = 4
 StepAmount = 1
-DefaultValue = 3
+DefaultValue = 2
 DependentOption = D_COLOR_CORRECTION
 
 [OptionRangeFloat]
-GUIName = RedCorrection
+GUIName = Channels R|Y|X|H|Y
 OptionName = B_RED_CORRECTION
-MinValue = 0.100
-MaxValue = 4.000
-StepAmount = 0.050
-DefaultValue = 1.500
+MinValue = 0.10
+MaxValue = 8.00
+StepAmount = 0.10
+DefaultValue = 1.50
 DependentOption = D_COLOR_CORRECTION
 
 [OptionRangeFloat]
-GUIName = GreenCorrection
+GUIName = Channels G|X|Y|S|U
 OptionName = C_GREEN_CORRECTION
-MinValue = 0.100
-MaxValue = 4.000
-StepAmount = 0.050
-DefaultValue = 1.500
+MinValue = 0.10
+MaxValue = 8.00
+StepAmount = 0.10
+DefaultValue = 1.50
 DependentOption = D_COLOR_CORRECTION
 
 [OptionRangeFloat]
-GUIName = BlueCorrection
+GUIName = Channels B|Y|Z|V|V
 OptionName = D_BLUE_CORRECTION
-MinValue = 0.100
-MaxValue = 4.000
-StepAmount = 0.050
-DefaultValue = 1.500
+MinValue = 0.10
+MaxValue = 8.00
+StepAmount = 0.10
+DefaultValue = 3.00
+DependentOption = D_COLOR_CORRECTION
+
+[OptionRangeFloat]
+GUIName = PaletteStrength
+OptionName = E_CORRECT_STR
+MinValue = 0.00
+MaxValue = 2.00
+StepAmount = 0.01
+DefaultValue = 1.00
 DependentOption = D_COLOR_CORRECTION
 
 [OptionBool]
@@ -281,7 +308,7 @@ OptionName = A_FILMIC
 MinValue = 0
 MaxValue = 2
 StepAmount = 1
-DefaultValue = 1
+DefaultValue = 0
 DependentOption = E_FILMIC_PROCESS
 
 [OptionRangeFloat]
@@ -290,7 +317,7 @@ OptionName = B_RED_SHIFT
 MinValue = 0.10
 MaxValue = 1.00
 StepAmount = 0.01
-DefaultValue = 0.50
+DefaultValue = 0.55
 DependentOption = E_FILMIC_PROCESS
 
 [OptionRangeFloat]
@@ -299,7 +326,7 @@ OptionName = C_GREEN_SHIFT
 MinValue = 0.10
 MaxValue = 1.00
 StepAmount = 0.01
-DefaultValue = 0.45
+DefaultValue = 0.50
 DependentOption = E_FILMIC_PROCESS
 
 [OptionRangeFloat]
@@ -308,22 +335,22 @@ OptionName = D_BLUE_SHIFT
 MinValue = 0.10
 MaxValue = 1.00
 StepAmount = 0.01
-DefaultValue = 0.45
+DefaultValue = 0.50
 DependentOption = E_FILMIC_PROCESS
 
 [OptionRangeFloat]
 GUIName = ShiftRatio
 OptionName = E_SHIFT_RATIO
 MinValue = 0.00
-MaxValue = 1.00
+MaxValue = 2.00
 StepAmount = 0.01
-DefaultValue = 0.25
+DefaultValue = 0.50
 DependentOption = E_FILMIC_PROCESS
 
 [OptionBool]
 GUIName = Gamma Correction
 OptionName = F_GAMMA_CORRECTION
-DefaultValue = true
+DefaultValue = false
 
 [OptionRangeFloat]
 GUIName = Gamma
@@ -343,9 +370,9 @@ DefaultValue = false
 GUIName = SharpenStrength
 OptionName = A_SHARPEN_STRENGTH
 MinValue = 0.00
-MaxValue = 1.00
+MaxValue = 2.00
 StepAmount = 0.01
-DefaultValue = 0.50
+DefaultValue = 0.75
 DependentOption = G_TEXTURE_SHARPEN
 
 [OptionRangeFloat]
@@ -354,7 +381,7 @@ OptionName = B_SHARPEN_CLAMP
 MinValue = 0.005
 MaxValue = 0.250
 StepAmount = 0.001
-DefaultValue = 0.020
+DefaultValue = 0.012
 DependentOption = G_TEXTURE_SHARPEN
 
 [OptionRangeFloat]
@@ -389,6 +416,33 @@ StepAmount = 0.01
 DefaultValue = 0.15
 DependentOption = H_PIXEL_VIBRANCE
 
+[OptionRangeFloat]
+GUIName = RedVibrance
+OptionName = B_R_VIBRANCE
+MinValue = -1.00
+MaxValue = 4.00
+StepAmount = 0.01
+DefaultValue = 1.00
+DependentOption = H_PIXEL_VIBRANCE
+
+[OptionRangeFloat]
+GUIName = GreenVibrance
+OptionName = C_G_VIBRANCE
+MinValue = -1.00
+MaxValue = 4.00
+StepAmount = 0.01
+DefaultValue = 1.00
+DependentOption = H_PIXEL_VIBRANCE
+
+[OptionRangeFloat]
+GUIName = BlueVibrance
+OptionName = D_B_VIBRANCE
+MinValue = -1.00
+MaxValue = 4.00
+StepAmount = 0.01
+DefaultValue = 1.00
+DependentOption = H_PIXEL_VIBRANCE
+
 [OptionBool]
 GUIName = Contrast Enhancement
 OptionName = I_CONTRAST_ENHANCEMENT
@@ -414,7 +468,7 @@ OptionName = A_EDGE_STRENGTH
 MinValue = 0.00
 MaxValue = 4.00
 StepAmount = 0.01
-DefaultValue = 1.50
+DefaultValue = 1.00
 DependentOption = J_CEL_SHADING
 
 [OptionRangeFloat]
@@ -423,7 +477,7 @@ OptionName = B_EDGE_FILTER
 MinValue = 0.25
 MaxValue = 1.00
 StepAmount = 0.01
-DefaultValue = 0.65
+DefaultValue = 0.60
 DependentOption = J_CEL_SHADING
 
 [OptionRangeFloat]
@@ -463,6 +517,38 @@ DefaultValue = 1
 DependentOption = J_CEL_SHADING
 
 [OptionBool]
+GUIName = Paint Shading
+OptionName = J_PAINT_SHADING
+DefaultValue = false
+
+[OptionRangeInteger]
+GUIName = PaintMethod
+OptionName = A_PAINT_TYPE
+MinValue = 0
+MaxValue = 1
+StepAmount = 1
+DefaultValue = 1
+DependentOption = J_PAINT_SHADING
+
+[OptionRangeInteger]
+GUIName = PaintRadius
+OptionName = B_PAINT_RAD
+MinValue = 1
+MaxValue = 8
+StepAmount = 1
+DefaultValue = 4
+DependentOption = J_PAINT_SHADING
+
+[OptionRangeFloat]
+GUIName = PaintStrength
+OptionName = C_PAINT_STR
+MinValue = 0.25
+MaxValue = 2.00
+StepAmount = 0.01
+DefaultValue = 1.00
+DependentOption = J_PAINT_SHADING
+
+[OptionBool]
 GUIName = Scanlines
 OptionName = K_SCAN_LINES
 DefaultValue = false
@@ -500,7 +586,7 @@ OptionName = B_SCANLINE_BRIGHTNESS
 MinValue = 0.50
 MaxValue = 2.00
 StepAmount = 0.01
-DefaultValue = 1.00
+DefaultValue = 1.10
 DependentOption = K_SCAN_LINES
 
 [OptionRangeFloat]
@@ -609,12 +695,21 @@ OptionName = M_DITHER_PASS
 DefaultValue = false
 
 [OptionRangeInteger]
-GUIName = Dither Type
+GUIName = DitherType
 OptionName = A_DITHER_TYPE
 MinValue = 0
 MaxValue = 1
 StepAmount = 1
-DefaultValue = 1
+DefaultValue = 0
+DependentOption = M_DITHER_PASS
+
+[OptionRangeInteger]
+GUIName = ShowMethod
+OptionName = B_DITHER_SHOW
+MinValue = 0
+MaxValue = 1
+StepAmount = 1
+DefaultValue = 0
 DependentOption = M_DITHER_PASS
 
 [/configuration]
@@ -626,42 +721,40 @@ DependentOption = M_DITHER_PASS
 
 uint timer = GetTime();
 float2 texcoord = GetCoordinates();
-float2 screenSize = GetResolution();
 float2 pixelSize = GetInvResolution();
+float2 screenSize = GetResolution();
 float2 texSize = textureSize(samp9, 0).xy;
 
+#define float3x3 mat3
 #define mul(x, y) y * x
 #define FIX(c) max(abs(c), 1e-5)
 #define saturate(x) clamp(x, 0.0, 1.0)
 #define SampleLocationLod(location, lod) textureLod(samp9, float3(location, layer), lod)
 
-float2 invDefocus = float2(1.0 / 3840.0, 1.0 / 2160.0);
+float Epsilon = 1e-10;
 const float3 lumCoeff = float3(0.2126729, 0.7151522, 0.0721750);
-const float delta = 0.001;
 
+//Average relative luminance
 float AvgLuminance(float3 color)
 {
-    return sqrt((color.x * color.x * lumCoeff.x) +
-                (color.y * color.y * lumCoeff.y) +
-                (color.z * color.z * lumCoeff.z));
+    return sqrt(
+    (color.x * color.x * lumCoeff.x) +
+    (color.y * color.y * lumCoeff.y) +
+    (color.z * color.z * lumCoeff.z));
 }
 
 float smootherstep(float a, float b, float x)
 {
     x = saturate((x - a) / (b - a));
-    return x*x*x*(x*(x * 6 - 15) + 10);
+    return x*x*x*(x*(x * 6.0 - 15.0) + 10.0);
 }
 
 /*
-float RGBLuminance(float3 color)
-{
-    return dot(color.xyz, lumCoeff);
-}
-
 float4 DebugClipping(float4 color)
 {
     if (color.x >= 0.99999 && color.y >= 0.99999 &&
     color.z >= 0.99999) color.xyz = float3(1.0f, 0.0f, 0.0f);
+
     if (color.x <= 0.00001 && color.y <= 0.00001 &&
     color.z <= 0.00001) color.xyz = float3(0.0f, 0.0f, 1.0f);
 
@@ -824,7 +917,7 @@ float4 BilinearPass(float4 color)
                        [GAMMA CORRECTION CODE SECTION]
 ------------------------------------------------------------------------------*/
 
-float3 RGBGammaToLinear(float3 color, float gamma)
+float3 EncodeGamma(float3 color, float gamma)
 {
     color = saturate(color);
     color.r = (color.r <= 0.0404482362771082) ?
@@ -837,7 +930,7 @@ float3 RGBGammaToLinear(float3 color, float gamma)
     return color;
 }
 
-float3 LinearToRGBGamma(float3 color, float gamma)
+float3 DecodeGamma(float3 color, float gamma)
 {
     color = saturate(color);
     color.r = (color.r <= 0.00313066844250063) ?
@@ -852,9 +945,9 @@ float3 LinearToRGBGamma(float3 color, float gamma)
 
 float4 GammaPass(float4 color)
 {
-    const float GammaConst = 2.233;
-    color.rgb = RGBGammaToLinear(color.rgb, GammaConst);
-    color.rgb = LinearToRGBGamma(color.rgb, GetOption(A_GAMMA));
+    const float GammaConst = 2.233333;
+    color.rgb = EncodeGamma(color.rgb, GammaConst);
+    color.rgb = DecodeGamma(color.rgb, GetOption(A_GAMMA));
     color.a = AvgLuminance(color.rgb);
 
     return color;
@@ -904,17 +997,17 @@ float3 BlendOverlay(float3 bloom, float3 blend)
 
 float3 BloomCorrection(float3 color)
 {
-    float3 bloom = (color.rgb - 0.5) * 2.0;
+    float3 bloom = color;
 
     bloom.r = 2.0 / 3.0 * (1.0 - (bloom.r * bloom.r));
     bloom.g = 2.0 / 3.0 * (1.0 - (bloom.g * bloom.g));
     bloom.b = 2.0 / 3.0 * (1.0 - (bloom.b * bloom.b));
 
-    bloom.r = color.r + GetOption(E_BLOOM_REDS) * bloom.r;
-    bloom.g = color.g + GetOption(F_BLOOM_GREENS) * bloom.g;
-    bloom.b = color.b + GetOption(G_BLOOM_BLUES) * bloom.b;
+    bloom.r = saturate(color.r + GetOption(E_BLOOM_REDS) * bloom.r);
+    bloom.g = saturate(color.g + GetOption(F_BLOOM_GREENS) * bloom.g);
+    bloom.b = saturate(color.b + GetOption(G_BLOOM_BLUES) * bloom.b);
 
-    color = bloom;
+    color = saturate(bloom);
 
     return color;
 }
@@ -931,8 +1024,8 @@ float4 PyramidFilter(float2 texcoord, float2 width)
 
 float3 Blend(float3 bloom, float3 blend)
 {
-         if (GetOption(A_BLOOM_TYPE) == 0) { return BlendAddGlow(bloom, blend); }
-    else if (GetOption(A_BLOOM_TYPE) == 1) { return BlendGlow(bloom, blend); }
+         if (GetOption(A_BLOOM_TYPE) == 0) { return BlendGlow(bloom, blend); }
+    else if (GetOption(A_BLOOM_TYPE) == 1) { return BlendAddGlow(bloom, blend); }
     else if (GetOption(A_BLOOM_TYPE) == 2) { return BlendAddLight(bloom, blend); }
     else if (GetOption(A_BLOOM_TYPE) == 3) { return BlendScreen(bloom, blend); }
     else if (GetOption(A_BLOOM_TYPE) == 4) { return BlendLuma(bloom, blend); }
@@ -941,15 +1034,16 @@ float3 Blend(float3 bloom, float3 blend)
 
 float4 BloomPass(float4 color)
 {
-    float anflare = 4.00;
-    
-    float4 bloom = PyramidFilter(texcoord, invDefocus * GetOption(D_B_DEFOCUS));
+    float anflare = 4.0;
 
-    float2 dx = float2(invDefocus.x * GetOption(D_BLOOM_WIDTH), 0.0);
-    float2 dy = float2(0.0, invDefocus.y * GetOption(D_BLOOM_WIDTH));
+    float2 defocus = float2(GetOption(D_B_DEFOCUS), GetOption(D_B_DEFOCUS));
+    float4 bloom = PyramidFilter(texcoord, pixelSize * defocus);
 
-    float2 mdx = (dx * 2.0);
-    float2 mdy = (dy * 2.0);
+    float2 dx = float2(pixelSize.x * GetOption(D_BLOOM_WIDTH), 0.0);
+    float2 dy = float2(0.0, pixelSize.y * GetOption(D_BLOOM_WIDTH));
+
+    float2 mdx = mul(dx, 2.0);
+    float2 mdy = mul(dy, 2.0);
 
     float4 blend = bloom * 0.22520613262190495;
 
@@ -983,11 +1077,11 @@ float4 BloomPass(float4 color)
     blend += 0.002589001911021066 * SampleLocation(texcoord + mdx - mdy);
     blend = lerp(color, blend, GetOption(C_BLEND_STRENGTH));
 
-    bloom.rgb = Blend(bloom.rgb, blend.rgb);
-    bloom.rgb = BloomCorrection(bloom.rgb);
+    bloom.xyz = Blend(bloom.xyz, blend.xyz);
+    bloom.xyz = BloomCorrection(bloom.xyz);
 
-    color.a = AvgLuminance(color.rgb);
-    bloom.a = AvgLuminance(bloom.rgb);
+    color.a = AvgLuminance(color.xyz);
+    bloom.a = AvgLuminance(bloom.xyz);
     bloom.a *= anflare;
 
     color = lerp(color, bloom, GetOption(B_BLOOM_STRENGTH));
@@ -996,42 +1090,184 @@ float4 BloomPass(float4 color)
 }
 
 /*------------------------------------------------------------------------------
-                 [COLOR CORRECTION/TONE MAPPING CODE SECTION]
+                      [SCENE TONE MAPPING CODE SECTION]
 ------------------------------------------------------------------------------*/
-
-float3 FilmicALU(float3 color)
-{
-    float3 tone = color;
-    const float gamma = 2.2;
-
-    tone = max(float3(0.0), tone - 0.004);
-    tone = (tone * (6.2 * tone + 0.5)) / (tone * (6.2 * tone + 1.7) + 0.06);
-
-    tone.r = pow(tone.r, gamma);
-    tone.g = pow(tone.g, gamma);
-    tone.b = pow(tone.b, gamma);
-
-    return lerp(color, tone, GetOption(B_TONE_AMOUNT) / 2.2);
-}
 
 float3 FilmicCurve(float3 color)
 {
-    float3 X = color;
+    float3 T = color;
+    float tnamn = GetOption(B_TONE_AMOUNT);
 
-    float A = 0.10;
-    float B = 0.30;
-    float C = 0.10;
-    float D = GetOption(B_TONE_AMOUNT);
-    float E = 0.02;
-    float F = 0.30;
-    float W = GetOption(F_WHITEPOINT);
+    float A = 0.100;
+    float B = 0.300;
+    float C = 0.100;
+    float D = tnamn;
+    float E = 0.020;
+    float F = 0.300;
+    float W = 1.012;
 
-    float3 sum = ((X*(A*X + C*B) + D*E) / (X*(A*X + B) + D*F)) - E / F;
+    T.r = ((T.r*(A*T.r + C*B) + D*E) / (T.r*(A*T.r + B) + D*F)) - E / F;
+    T.g = ((T.g*(A*T.g + C*B) + D*E) / (T.g*(A*T.g + B) + D*F)) - E / F;
+    T.b = ((T.b*(A*T.b + C*B) + D*E) / (T.b*(A*T.b + B) + D*F)) - E / F;
+
     float denom = ((W*(A*W + C*B) + D*E) / (W*(A*W + B) + D*F)) - E / F;
+    float3 white = float3(denom, denom, denom);
 
-    color = sum / denom;
+    T = T / white;
+    color = saturate(T);
 
-    return saturate(color);
+    return color;
+}
+
+float3 FilmicTonemap(float3 color)
+{
+    float3 tone = color;
+
+    float3 black = float3(0.0, 0.0, 0.0);
+    tone = max(black, tone);
+
+    tone.r = (tone.r * (6.2 * tone.r + 0.5)) / (tone.r * (6.2 * tone.r + 1.66) + 0.066);
+    tone.g = (tone.g * (6.2 * tone.g + 0.5)) / (tone.g * (6.2 * tone.g + 1.66) + 0.066);
+    tone.b = (tone.b * (6.2 * tone.b + 0.5)) / (tone.b * (6.2 * tone.b + 1.66) + 0.066);
+
+    const float gamma = 2.42;
+    tone = EncodeGamma(tone, gamma);
+
+    color = lerp(color, tone, GetOption(B_TONE_FAMOUNT));
+
+    return color;
+}
+
+float4 TonemapPass(float4 color)
+{
+    float luminanceAverage = AvgLuminance(float3(GetOption(E_LUMINANCE)));
+    float bmax = max(color.r, max(color.g, color.b));
+    
+    float blevel = pow(saturate(bmax), GetOption(C_BLACK_LEVELS));
+    color.rgb = color.rgb * blevel;
+
+    if (OptionEnabled(A_TONEMAP_FILM)) { color.rgb = FilmicTonemap(color.rgb); }
+    if (GetOption(A_TONEMAP_TYPE) == 1) { color.rgb = FilmicCurve(color.rgb); }
+
+    // RGB -> XYZ conversion
+    const float3x3 RGB2XYZ = float3x3(0.4124564, 0.3575761, 0.1804375,
+                                      0.2126729, 0.7151522, 0.0721750,
+                                      0.0193339, 0.1191920, 0.9503041);
+
+    float3 XYZ = mul(RGB2XYZ, color.rgb);
+
+    // XYZ -> Yxy conversion
+    float3 Yxy;
+
+    Yxy.r = XYZ.g;                                  // copy luminance Y
+    Yxy.g = XYZ.r / (XYZ.r + XYZ.g + XYZ.b);        // x = X / (X + Y + Z)
+    Yxy.b = XYZ.g / (XYZ.r + XYZ.g + XYZ.b);        // y = Y / (X + Y + Z)
+
+    // (Wt) Tone mapped scaling of the initial wp before input modifiers
+    float Wt = saturate(Yxy.r / AvgLuminance(XYZ));
+
+    if (GetOption(A_TONEMAP_TYPE) == 2) { Yxy.r = FilmicCurve(Yxy).r; }
+
+    // (Lp) Map average luminance to the middlegrey zone by scaling pixel luminance
+    float Lp = Yxy.r * GetOption(D_EXPOSURE) / (luminanceAverage + Epsilon);
+
+    // (Wp) White point calculated, based on the toned white, and input modifier
+    float Wp = dot(abs(Wt), GetOption(F_WHITEPOINT));
+
+    // (Ld) Scale all luminance within a displayable range of 0 to 1
+    Yxy.r = (Lp * (1.0 + Lp / (Wp * Wp))) / (1.0 + Lp);
+
+    // Yxy -> XYZ conversion
+    XYZ.r = Yxy.r * Yxy.g / Yxy.b;                  // X = Y * x / y
+    XYZ.g = Yxy.r;                                  // copy luminance Y
+    XYZ.b = Yxy.r * (1.0 - Yxy.g - Yxy.b) / Yxy.b;  // Z = Y * (1-x-y) / y
+
+    // XYZ -> RGB conversion
+    const float3x3 XYZ2RGB = float3x3(3.2404542,-1.5371385,-0.4985314,
+                                     -0.9692660, 1.8760108, 0.0415560,
+                                      0.0556434,-0.2040259, 1.0572252);
+
+    color.rgb = mul(XYZ2RGB, XYZ);
+    color.a = AvgLuminance(color.rgb);
+
+    return color;
+}
+
+/*------------------------------------------------------------------------------
+                      [CROSS PROCESSING CODE SECTION]
+------------------------------------------------------------------------------*/
+
+//Conversion matrices
+float3 RGBtoXYZ(float3 rgb)
+{
+    const float3x3 m = float3x3(
+    0.4124564, 0.3575761, 0.1804375,
+    0.2126729, 0.7151522, 0.0721750,
+    0.0193339, 0.1191920, 0.9503041 );
+
+    return mul(m, rgb);
+}
+
+float3 XYZtoRGB(float3 xyz)
+{
+    const float3x3 m = float3x3(
+    3.2404542,-1.5371385,-0.4985314,
+   -0.9692660, 1.8760108, 0.0415560,
+    0.0556434,-0.2040259, 1.0572252 );
+
+    return mul(m, xyz);
+}
+
+float3 RGBtoYUV(float3 RGB)
+{
+    const float3x3 m = float3x3(
+    0.2126, 0.7152, 0.0722,
+   -0.09991,-0.33609, 0.436,
+    0.615, -0.55861, -0.05639 );
+
+    return mul(m, RGB);
+}
+
+float3 YUVtoRGB(float3 YUV)
+{
+   const float3x3 m = float3x3(
+    1.000, 0.000, 1.28033,
+    1.000,-0.21482,-0.38059,
+    1.000, 2.12798, 0.000 );
+
+    return mul(m, YUV);
+}
+
+//Converting XYZ to Yxy
+float3 XYZtoYxy(float3 xyz)
+{
+    float3 Yxy;
+    float w = (xyz.r + xyz.g + xyz.b);
+
+    Yxy.r = xyz.g;
+    Yxy.g = xyz.r / w;
+    Yxy.b = xyz.g / w;
+
+    return Yxy;
+}
+
+//Converting Yxy to XYZ
+float3 YxytoXYZ(float3 Yxy)
+{
+    float3 xyz;
+    xyz.g = Yxy.r;
+    xyz.r = Yxy.r * Yxy.g / Yxy.b;
+    xyz.b = Yxy.r * (1.0 - Yxy.g - Yxy.b) / Yxy.b;
+
+    return xyz;
+}
+
+float MidLuminance(float3 color)
+{
+    return sqrt(
+    (color.x * color.x * 0.3333) +
+    (color.y * color.y * 0.3333) +
+    (color.z * color.z * 0.3333));
 }
 
 float3 CrossShift(float3 color)
@@ -1039,18 +1275,116 @@ float3 CrossShift(float3 color)
     float3 cross;
 
     float2 CrossMatrix[3] = {
-    float2 (0.96, 0.04),
-    float2 (0.99, 0.01),
-    float2 (0.97, 0.03), };
+    float2 (0.960, 0.040 * color.x),
+    float2 (0.980, 0.020 * color.y),
+    float2 (0.970, 0.030 * color.z), };
 
-    cross.r = GetOption(B_RED_SHIFT) * CrossMatrix[0].x + CrossMatrix[0].y;
-    cross.g = GetOption(C_GREEN_SHIFT) * CrossMatrix[1].x + CrossMatrix[1].y;
-    cross.b = GetOption(D_BLUE_SHIFT) * CrossMatrix[2].x + CrossMatrix[2].y;
+    cross.x = GetOption(B_RED_SHIFT) * CrossMatrix[0].x + CrossMatrix[0].y;
+    cross.y = GetOption(C_GREEN_SHIFT) * CrossMatrix[1].x + CrossMatrix[1].y;
+    cross.z = GetOption(D_BLUE_SHIFT) * CrossMatrix[2].x + CrossMatrix[2].y;
 
-    float lum = AvgLuminance(color);
-    cross = lerp(float3(0.0), cross, saturate(lum * 2.0));
-    cross = lerp(cross, float3(1.0), saturate(lum - 0.5) * 2.0);
+    float lum = MidLuminance(color);
+    float3 black = float3(0.0, 0.0, 0.0);
+    float3 white = float3(1.0, 1.0, 1.0);
+
+    cross = lerp(black, cross, saturate(lum * 2.0));
+    cross = lerp(cross, white, saturate(lum - 0.5) * 2.0);
     color = lerp(color, cross, saturate(lum * GetOption(E_SHIFT_RATIO)));
+
+    return color;
+}
+
+float4 CrossPass(float4 color)
+{
+    if (GetOption(A_FILMIC) == 0) {
+    color.rgb = CrossShift(color.rgb); }
+
+    else if (GetOption(A_FILMIC) == 1) {
+    float3 XYZ = RGBtoXYZ(color.rgb);
+    float3 Yxy = XYZtoYxy(XYZ);
+
+    Yxy = CrossShift(Yxy);
+    XYZ = YxytoXYZ(Yxy);
+
+    color.rgb = XYZtoRGB(XYZ); }
+
+    else if (GetOption(A_FILMIC) == 2) {
+    float3 XYZ = RGBtoXYZ(color.rgb);
+    float3 Yxy = XYZtoYxy(XYZ);
+
+    XYZ = YxytoXYZ(Yxy);
+    XYZ = CrossShift(XYZ);
+
+    color.rgb = XYZtoRGB(XYZ); }
+
+    color.a = AvgLuminance(color.rgb);
+
+    return saturate(color);
+}
+
+/*------------------------------------------------------------------------------
+                      [COLOR CORRECTION CODE SECTION]
+------------------------------------------------------------------------------*/
+
+// Converting pure hue to RGB
+float3 HUEtoRGB(float H)
+{
+    float R = abs(H * 6.0 - 3.0) - 1.0;
+    float G = 2.0 - abs(H * 6.0 - 2.0);
+    float B = 2.0 - abs(H * 6.0 - 4.0);
+
+    return saturate(float3(R, G, B));
+}
+
+// Converting RGB to hue/chroma/value
+float3 RGBtoHCV(float3 RGB)
+{
+    float4 BG = float4(RGB.bg,-1.0, 2.0 / 3.0);
+    float4 GB = float4(RGB.gb, 0.0,-1.0 / 3.0);
+
+    float4 P = (RGB.g < RGB.b) ? BG : GB;
+
+    float4 XY = float4(P.xyw, RGB.r);
+    float4 YZ = float4(RGB.r, P.yzx);
+
+    float4 Q = (RGB.r < P.x) ? XY : YZ;
+
+    float C = Q.x - min(Q.w, Q.y);
+    float H = abs((Q.w - Q.y) / (6.0 * C + Epsilon) + Q.z);
+
+    return float3(H, C, Q.x);
+}
+
+// Converting RGB to HSV
+float3 RGBtoHSV(float3 RGB)
+{
+    float3 HCV = RGBtoHCV(RGB);
+    float S = HCV.y / (HCV.z + Epsilon);
+
+    return float3(HCV.x, S, HCV.z);
+}
+
+// Converting HSV to RGB
+float3 HSVtoRGB(float3 HSV)
+{
+    float3 RGB = HUEtoRGB(HSV.x);
+    return ((RGB - 1.0) * HSV.y + 1.0) * HSV.z;
+}
+
+// Pre correction color mask
+float3 PreCorrection(float3 color)
+{
+    float3 RGB = color;
+
+    RGB.r = 2.0 / 3.0 * (1.0 - (RGB.r * RGB.r));
+    RGB.g = 2.0 / 3.0 * (1.0 - (RGB.g * RGB.g));
+    RGB.b = 2.0 / 3.0 * (1.0 - (RGB.b * RGB.b));
+
+    RGB.r = saturate(color.r + (GetOption(B_RED_CORRECTION) / 200.0) * RGB.r);
+    RGB.g = saturate(color.g + (GetOption(C_GREEN_CORRECTION) / 200.0) * RGB.g);
+    RGB.b = saturate(color.b + (GetOption(D_BLUE_CORRECTION) / 200.0) * RGB.b);
+
+    color = saturate(RGB);
 
     return color;
 }
@@ -1065,66 +1399,43 @@ float3 ColorCorrection(float3 color)
     color.g = (1.0 / (1.0 + exp(-GetOption(C_GREEN_CORRECTION) * (color.g - 0.5))) - Y) / (1.0 - 2.0 * Y);
     color.b = (1.0 / (1.0 + exp(-GetOption(D_BLUE_CORRECTION) * (color.b - 0.5))) - Z) / (1.0 - 2.0 * Z);
 
-    return color;
+    return saturate(color);
 }
 
-float4 TonemapPass(float4 color)
+float4 CorrectionPass(float4 color)
 {
-    float avgluminance = AvgLuminance(float3(GetOption(E_LUMINANCE)));
-    float wpoint = max(color.r, max(color.g, color.b)); wpoint /= wpoint;
-    
-    color.rgb = FilmicALU(color.rgb);
-    color.rgb *= pow(abs(max(color.r, max(color.g, color.b))), GetOption(C_BLACK_LEVELS));
-    
-    if (OptionEnabled(E_FILMIC_PROCESS) && GetOption(A_FILMIC) == 1)
-    { color.rgb = CrossShift(color.rgb); }
+    float3 colorspace = PreCorrection(color.rgb);
 
-    if (GetOption(A_TONEMAP_TYPE) == 1) { color.rgb = FilmicCurve(color.rgb); }
-    
-    if (OptionEnabled(D_COLOR_CORRECTION) && GetOption(A_PALETTE) == 1)
-    { color.rgb = ColorCorrection(color.rgb); }
+    if (GetOption(A_PALETTE) == 0) {
+    colorspace = ColorCorrection(colorspace); }
 
-    // RGB -> XYZ conversion
-    const mat3 RGB2XYZ = mat3( 0.4124564, 0.2126729, 0.0193339,
-                               0.3575761, 0.7151522, 0.1191920,
-                               0.1804375, 0.0721750, 0.9503041 );
+    else if (GetOption(A_PALETTE) == 1) {
+    float3 XYZ = RGBtoXYZ(colorspace);
+    float3 Yxy = XYZtoYxy(XYZ);
 
-    float3 XYZ = (RGB2XYZ * color.rgb);
+    Yxy = ColorCorrection(Yxy);
+    XYZ = YxytoXYZ(Yxy);
+    colorspace = XYZtoRGB(XYZ); }
 
-    // XYZ -> Yxy conversion
-    float3 Yxy;
+    else if (GetOption(A_PALETTE) == 2) {
+    float3 XYZ = RGBtoXYZ(colorspace);
+    float3 Yxy = XYZtoYxy(XYZ);
 
-    Yxy.r = XYZ.g;                              // copy luminance Y
-    Yxy.g = XYZ.r / (XYZ.r + XYZ.g + XYZ.b);    // x = X / (X + Y + Z)
-    Yxy.b = XYZ.g / (XYZ.r + XYZ.g + XYZ.b);    // y = Y / (X + Y + Z)
+    XYZ = YxytoXYZ(Yxy);
+    XYZ = ColorCorrection(XYZ);
+    colorspace = XYZtoRGB(XYZ); }
 
-    if (GetOption(A_TONEMAP_TYPE) == 2) { Yxy.r = FilmicCurve(Yxy).r; }
-    if (OptionEnabled(D_COLOR_CORRECTION) && GetOption(A_PALETTE) == 2)
-    { Yxy = ColorCorrection(Yxy); }
+    else if (GetOption(A_PALETTE) == 3) {
+    float3 hsv = RGBtoHSV(colorspace);
+    hsv = ColorCorrection(hsv);
+    colorspace = HSVtoRGB(hsv); }
 
-    // (Lp) Map average luminance to the middlegrey zone by scaling pixel luminance
-    float Lp = Yxy.r * GetOption(D_EXPOSURE) / (avgluminance + delta);
+    else if (GetOption(A_PALETTE) == 4) {
+    float3 yuv = RGBtoYUV(colorspace);
+    yuv = ColorCorrection(yuv);
+    colorspace = YUVtoRGB(yuv); }
 
-    // (Ld) Scale all luminance within a displayable range of 0 to 1
-    Yxy.r = (Lp * (1.0 + Lp / wpoint)) / (1.0 + Lp);
-
-    // Yxy -> XYZ conversion
-    XYZ.r = Yxy.r * Yxy.g / Yxy.b;                  // X = Y * x / y
-    XYZ.g = Yxy.r;                                  // copy luminance Y
-    XYZ.b = Yxy.r * (1.0 - Yxy.g - Yxy.b) / Yxy.b;  // Z = Y * (1-x-y) / y
-
-    if (OptionEnabled(E_FILMIC_PROCESS) && GetOption(A_FILMIC) == 2)
-    { XYZ = CrossShift(XYZ); }
-    if (GetOption(A_TONEMAP_TYPE) == 3) { XYZ = FilmicCurve(XYZ); }
-     if (OptionEnabled(D_COLOR_CORRECTION) && GetOption(A_PALETTE) == 3) 
-    { XYZ = ColorCorrection(XYZ); }
-
-    // XYZ -> RGB conversion
-    const mat3 XYZ2RGB = mat3( 3.2404542, -0.9692660,  0.0556434,
-                              -1.5371385,  1.8760108, -0.2040259,
-                              -0.4985314,  0.0415560,  1.0572252 );
-
-    color.rgb = (XYZ2RGB * XYZ);
+    color.rgb = lerp(color.rgb, colorspace, GetOption(E_CORRECT_STR));
     color.a = AvgLuminance(color.rgb);
 
     return color;
@@ -1163,23 +1474,21 @@ float4 SampleBicubic(float2 texcoord)
 
     float2 uvCoord = float2(float(nX) / texSize.x, float(nY) / texSize.y);
 
-    for (int m = -1; m <= 2; m++)
-    {
-        for (int n = -1; n <= 2; n++)
-        {
-            float4 Samples = SampleLocation(uvCoord +
-            float2(texelSizeX * float(m), texelSizeY * float(n)));
+    for (int m = -1; m <= 2; m++) {
+    for (int n = -1; n <= 2; n++) {
+    
+    float4 Samples = SampleLocation(uvCoord +
+    float2(texelSizeX * float(m), texelSizeY * float(n)));
 
-            float vc1 = Cubic(float(m) - a);
-            float4 vecCoeff1 = float4(vc1, vc1, vc1, vc1);
+    float vc1 = Cubic(float(m) - a);
+    float4 vecCoeff1 = float4(vc1, vc1, vc1, vc1);
 
-            float vc2 = Cubic(-(float(n) - b));
-            float4 vecCoeff2 = float4(vc2, vc2, vc2, vc2);
+    float vc2 = Cubic(-(float(n) - b));
+    float4 vecCoeff2 = float4(vc2, vc2, vc2, vc2);
 
-            nSum = nSum + (Samples * vecCoeff2 * vecCoeff1);
-            nDenom = nDenom + (vecCoeff2 * vecCoeff1);
-        }
-    }
+    nSum = nSum + (Samples * vecCoeff2 * vecCoeff1);
+    nDenom = nDenom + (vecCoeff2 * vecCoeff1); }}
+    
     return nSum / nDenom;
 }
 
@@ -1203,22 +1512,25 @@ float4 TexSharpenPass(float4 color)
 }
 
 /*------------------------------------------------------------------------------
-                           [VIBRANCE CODE SECTION]
+                       [PIXEL VIBRANCE CODE SECTION]
 ------------------------------------------------------------------------------*/
 
 float4 VibrancePass(float4 color)
 {
+    float vib = GetOption(A_VIBRANCE);
     float luma = AvgLuminance(color.rgb);
 
     float colorMax = max(color.r, max(color.g, color.b));
     float colorMin = min(color.r, min(color.g, color.b));
 
     float colorSaturation = colorMax - colorMin;
+    float3 colorCoeff = float3(GetOption(B_R_VIBRANCE)*
+    vib, GetOption(C_G_VIBRANCE) * vib, GetOption(D_B_VIBRANCE) * vib);
 
-    color.rgb = lerp(float3(luma), color.rgb, (1.0 + (GetOption(A_VIBRANCE) * (1.0 - (sign(GetOption(A_VIBRANCE)) * colorSaturation)))));
+    color.rgb = lerp(float3(luma), color.rgb, (1.0 + (colorCoeff * (1.0 - (sign(colorCoeff) * colorSaturation)))));
     color.a = AvgLuminance(color.rgb);
 
-    return color; //Debug: return colorSaturation.xxxx;
+    return saturate(color); //Debug: return colorSaturation.xxxx;
 }
 
 /*------------------------------------------------------------------------------
@@ -1257,24 +1569,6 @@ float4 ContrastPass(float4 color)
                           [CEL SHADING CODE SECTION]
 ------------------------------------------------------------------------------*/
 
-float3 GetYUV(float3 RGB)
-{
-    const mat3 RGB2YUV = mat3(0.2126, 0.7152, 0.0722,
-                             -0.09991,-0.33609, 0.436,
-                              0.615, -0.55861, -0.05639);
-
-    return (RGB * RGB2YUV);
-}
-
-float3 GetRGB(float3 YUV)
-{
-    const mat3 YUV2RGB = mat3(1.000, 0.000, 1.28033,
-                              1.000,-0.21482,-0.38059,
-                              1.000, 2.12798, 0.000);
-
-    return (YUV * YUV2RGB);
-}
-
 float4 CelPass(float4 color)
 {   
     float3 yuv;
@@ -1307,14 +1601,14 @@ float4 CelPass(float4 color)
         col[i].b = round(col[i].b * thresholds.b) / thresholds.b; }
 
         lum[i] = AvgLuminance(col[i].xyz);
-        yuv = GetYUV(col[i]);
+        yuv = RGBtoYUV(col[i]);
 
         if (GetOption(E_YUV_LUMA) == 0)
         { yuv.r = round(yuv.r * thresholds.r) / thresholds.r; }
         else
         { yuv.r = saturate(round(yuv.r * lum[i]) / thresholds.r + lum[i]); }
 
-        yuv = GetRGB(yuv);
+        yuv = YUVtoRGB(yuv);
         sum += yuv;
     }
 
@@ -1333,7 +1627,7 @@ float4 CelPass(float4 color)
     if (GetOption(D_PALETTE_TYPE) == 0)
         { color.rgb = lerp(color.rgb, color.rgb + pow(edge, GetOption(B_EDGE_FILTER)) * -GetOption(A_EDGE_STRENGTH), GetOption(A_EDGE_STRENGTH)); }
     else if (GetOption(D_PALETTE_TYPE) == 1)
-        { color.rgb = lerp(color.rgb + pow(edge, GetOption(B_EDGE_FILTER)) * -GetOption(A_EDGE_STRENGTH), shadedColor, 0.30); }
+        { color.rgb = lerp(color.rgb + pow(edge, GetOption(B_EDGE_FILTER)) * -GetOption(A_EDGE_STRENGTH), shadedColor, 0.25); }
     else if (GetOption(D_PALETTE_TYPE) == 2)
         { color.rgb = lerp(shadedColor + edge * -GetOption(A_EDGE_STRENGTH), pow(edge, GetOption(B_EDGE_FILTER)) * -GetOption(A_EDGE_STRENGTH) + color.rgb, 0.50); }
 
@@ -1365,7 +1659,7 @@ float2 CoordRot(float2 tc, float angle)
     rotX = ((rotX/aspect) * 0.5+0.5);
     rotY = rotY * 0.5+0.5;
 
-    return float2(rotX,rotY);
+    return float2(rotX, rotY);
 }
 
 float4 Randomize(float2 texcoord) 
@@ -1520,32 +1814,48 @@ float4 ScanlinesPass(float4 color)
                            [DITHERING CODE SECTION]
 ------------------------------------------------------------------------------*/
 
+float Random(float2 texcoord)
+{
+    float2 tex = CoordRot(texcoord, timer);
+
+    float seed = dot(tex, float2(12.9898, 78.233));
+    float sine = sin(seed);
+    float noise = frac(sine * 43758.5453);
+
+    return noise;
+}
+
 float4 DitherPass(float4 color)
 {
-    float ditherBit  = 8.0;
+    float ditherBits = 8.0;
 
-    if (GetOption(A_DITHER_TYPE) == 1) //Ordered grid
-    {
-        float gridPos = fract(dot(gl_FragCoord.xy -
-        float2(0.5, 0.5), float2(1.0 / 16.0, 10.0 / 36.0) + 0.25));
+    if (GetOption(A_DITHER_TYPE) == 1) {  //random dithering
 
-        float shift = (0.25) * (1.0 / (pow(2.0, ditherBit) - 1.0));
-        float3 rgbShift = float3(shift, -shift, shift);
-        rgbShift = lerp(2.0 * rgbShift, -2.0 * rgbShift, gridPos);
+    float noise = Random(gl_FragCoord.xy);
+    float ditherShift = (1.0 / (pow(2.0, ditherBits) - 1.0));
+    float ditherHalfShift = (ditherShift * 0.5);
+    ditherShift = ditherShift * noise - ditherHalfShift;
 
-        color.rgb += rgbShift;
-    }
-    else //Pseudo random
-    {
-        float seed = dot(texcoord, float2(12.9898, 78.233)); float sine = sin(seed);
-        float noise = frac(sine * 43758.5453 + texcoord.x);
+    color.rgb += float3(-ditherShift, ditherShift, -ditherShift);
 
-        float shift = (1.0 / (pow(2, ditherBit) - 1.0));
-        float halfShift = (shift * 0.5);
-        shift = shift * noise - halfShift;
+    if (GetOption(B_DITHER_SHOW) == 1)
+    { color.rgb = float3(noise); }}
 
-        color.rgb += float3(-shift, shift, -shift);
-    }
+    else if (GetOption(A_DITHER_TYPE) == 0) { //ordered dithering
+
+    float2 ditherSize = float2(1.0 / 16.0, 10.0 / 36.0);
+    float gridPosition = fract(dot(gl_FragCoord.xy, ditherSize) + 0.25);
+    float ditherShift = (0.25) * (1.0 / (pow(2.0, ditherBits) - 1.0));
+
+    float3 RGBShift = float3(ditherShift, -ditherShift, ditherShift);
+    RGBShift = lerp(2.0 * RGBShift, -2.0 * RGBShift, gridPosition);
+
+    color.rgb += RGBShift;
+
+    if (GetOption(B_DITHER_SHOW) == 1)
+    { color.rgb = float3(gridPosition); }}
+
+    color.a = AvgLuminance(color.rgb);
 
     return color;
 }
@@ -1951,12 +2261,14 @@ void main()
         if (OptionEnabled(A_BILINEAR_FILTER)) { color = BilinearPass(color); }
         if (OptionEnabled(B_BICUBLIC_SCALER)) { color = BicubicScalerPass(color); }
         if (OptionEnabled(B_LANCZOS_SCALER)) { color = LanczosScalerPass(color); }
+        if (OptionEnabled(G_TEXTURE_SHARPEN)) { color = TexSharpenPass(color); }
+        if (OptionEnabled(J_CEL_SHADING)) { color = CelPass(color); }
         if (OptionEnabled(F_GAMMA_CORRECTION)) { color = GammaPass(color); }
         if (OptionEnabled(H_PIXEL_VIBRANCE)) { color = VibrancePass(color); }
-        if (OptionEnabled(J_CEL_SHADING)) { color = CelPass(color); }
-        if (OptionEnabled(G_TEXTURE_SHARPEN)) { color = TexSharpenPass(color); }
-        if (OptionEnabled(B_BLOOM_PASS)) { color = BloomPass(color); }
         if (OptionEnabled(C_TONEMAP_PASS)) { color = TonemapPass(color); }
+        if (OptionEnabled(D_COLOR_CORRECTION)) { color = CorrectionPass(color); }
+        if (OptionEnabled(E_FILMIC_PROCESS)) { color = CrossPass(color); }  
+        if (OptionEnabled(B_BLOOM_PASS)) { color = BloomPass(color); }
         if (OptionEnabled(I_CONTRAST_ENHANCEMENT)) { color = ContrastPass(color); }
         if (OptionEnabled(L_FILM_GRAIN_PASS)) { color = GrainPass(color); }
         if (OptionEnabled(L_VIGNETTE_PASS)) { color = VignettePass(color); }
